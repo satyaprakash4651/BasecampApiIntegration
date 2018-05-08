@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>Mihai's App</title>
+</head>
+
+<body>
+
+<div>
+  {% if request.user.is_authenticated %}
+    {% if success %}
+      <span>Todo successfully uploaded to Basecamp!</span>
+    {% endif %}
+    <form enctype="multipart/form-data" method="POST" action=".">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button>Submit</button>
+    </form>
+  {% else %}
+    You must login
+  {% endif %}
+</div>
+
+</body>
+
+</html>
